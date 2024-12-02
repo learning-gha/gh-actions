@@ -1,1 +1,2 @@
-# gh-actions
+# The GH Actions Course
+
