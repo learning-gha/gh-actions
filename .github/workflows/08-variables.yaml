@@ -6,6 +6,7 @@ on:
 env:
   WORKFLOW_VAR: 'I am a workflow env var'
   OVERWRITTEN: 'I will be overwrittern'
+  UNDEFINED_VAR_WITH_DEFAULT: ${{ vars.UNDEFINED_VAR || 'default value' }}
 
 jobs:
   echo:
@@ -29,6 +30,27 @@ jobs:
           OVERWRITTEN: 'I will be overwrittern at the step level'
         run: |
           echo "Step env var: ${{ env.OVERWRITTEN }}"
-        
- 
-    
+  echo2:
+    runs-on: ubuntu-lates
+    steps:
+      - name: Print Variables
+        run: |
+          echo "Org var: ${{ var.ORG_VAR }}"
+          echo "Org var2: ${{ var.ORG_VAR_2 }}"
+          echo "Repp var: ${{ var.REPO_VAR }}"
+  echo-prod:
+    runs-on: ubuntu-latest
+    environment: Prod
+    steps:
+      - name: Print Variables
+        run: |
+          echo "Org var: ${{ var.ORG_VAR }}"
+          echo "Org var2: ${{ var.ORG_VAR_2 }}"
+          echo "Repp var: ${{ var.REPO_VAR }}"
+          echo "Env var: ${{ var.TARGET_VAR }}"
+  echo-undefined:
+    runs-on: ubuntu-lates
+    steps:
+      - name: Print Undefined Variables
+        run: |
+          echo "Org var: ${{ env.UNDEFINED_VAR_WITH_DEFAULT }}"
