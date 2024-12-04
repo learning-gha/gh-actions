@@ -35,7 +35,7 @@ jobs:
               uses: actions/upload-artifact@v3
               with:
                 name: app
-                path: b14-artifacts/react-app/build
+                path: 14-artifacts/react-app/build
             
               
     deploy:
