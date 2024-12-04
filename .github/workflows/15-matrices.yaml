@@ -15,6 +15,9 @@ jobs:
                 include:
                     - os: ubunutu-latest
                       node-version: 16.x
+                    - os: ubunutu-latest
+                      node-version: 21.x
+                      tag: experimental
         steps:
             - name: Setup node
               uses: actions/setup-node@v3
