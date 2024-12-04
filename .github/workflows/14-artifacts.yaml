@@ -49,3 +49,6 @@ jobs:
                 path: build
             - name: Show folder structure
               run: ls -la
+
+# Download the build app locally to ~/Download folder, extract the zipped file, and then run this `npx serve -s ~/Downloads/app`
+# To run the code coverage: `CI=true npm run test -- --coverage`
