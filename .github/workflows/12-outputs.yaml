@@ -1,0 +1,16 @@
+name: 12 - Outputs in GHA
+on:
+    workflow_dispatch
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    outputs:
+        name: ${{ steps.step1.outputs.NAME }}
+    steps:
+      - id: step1
+        run: echo "NAME=Sushil" >> "$GITHUB_OUTPUT"
+  greetings:
+    runs-on: ubuntu-latest
+    needs: welcome
+    steps:
+      - run: echo "Hello, ${{ needs.welcome.outputs.name }}"
